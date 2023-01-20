@@ -57,11 +57,11 @@ arcade.draw_arc_filled(300, 320, 60, 100, arcade.csscolor.DARK_GREEN, 0, 180)
 # Another tree, with a trunk and triangle for top
 # Triangle is made of these three points:
 # (400, 400), (370, 320), (430, 320)
-arcade.draw_rectangle_filled(400, 100, 20, 60, arcade.csscolor.SADDLE_BROWN)
+arcade.draw_rectangle_filled(400, 80, 30, 80, arcade.csscolor.SADDLE_BROWN)
 arcade.draw_triangle_filled(400, 180, 370, 100, 430, 100, arcade.csscolor.DARK_GREEN)
 
 # Draw a tree using a polygon with a list of points
-arcade.draw_rectangle_filled(500, 300, 20, 60, arcade.csscolor.SANDY_BROWN)
+arcade.draw_rectangle_filled(500, 300, 10, 60, arcade.csscolor.SANDY_BROWN)
 arcade.draw_polygon_filled(((500, 400),
                             (480, 360),
                             (470, 320),
