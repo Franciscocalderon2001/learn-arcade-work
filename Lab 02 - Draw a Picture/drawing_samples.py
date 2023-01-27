@@ -34,7 +34,7 @@ arcade.draw_lrtb_rectangle_filled(0, 599, 300, 0, arcade.csscolor.GREEN)
 # Tree Trunk
 arcade.draw_rectangle_filled(100, 300, 20, 60, arcade.csscolor.ROSY_BROWN)
 
-# Tree top
+# circle top
 arcade.draw_circle_filled(100,330,30, arcade.csscolor.DARK_GREEN)
 
 # Draw an ellipse and rect with
@@ -44,9 +44,8 @@ arcade.draw_circle_filled(100,330,30, arcade.csscolor.DARK_GREEN)
 # arcade.draw_rectangle_outline(300, 300, 350, 200, arcade.csscolor.BLACK, 3)
 # arcade.draw_ellipse_outline(300,300,350,200, arcade.csscolor.RED, 3)
 
-# Another tree, with a trunk and ellipse for top
-arcade.draw_rectangle_filled(200, 100, 20, 60, arcade.csscolor.SIENNA)
-arcade.draw_ellipse_filled(200, 150, 60, 80, arcade.csscolor.DARK_GREEN)
+# Drew a elliptic pond
+arcade.draw_ellipse_filled(170, 150, 150, 200, arcade.csscolor.DARK_GREEN)
 
 # Another tree, with trunk and arc for top
 # Arc is centered at (300, 340) with a width of 60 and height of 100.
@@ -54,12 +53,15 @@ arcade.draw_ellipse_filled(200, 150, 60, 80, arcade.csscolor.DARK_GREEN)
 arcade.draw_rectangle_filled(300, 300, 20, 60, arcade.csscolor.BROWN)
 
 
-# House with a triangular roof and arc door
+# House with a triangular roof and arc door, also a two windows
 # Triangle is made of these three points:
 # (400, 400), (370, 320), (430, 320)
 arcade.draw_rectangle_filled(400, 100, 150, 150, arcade.csscolor.WHITE)
 arcade.draw_triangle_filled(400, 300, 305, 175, 500, 175, arcade.csscolor.BROWN)
 arcade.draw_arc_filled(400, 25, 80, 120, arcade.csscolor.DARK_GREEN, 0, 180)
+arcade.draw_circle_filled(440,120,25, arcade.csscolor.DARK_GREEN)
+arcade.draw_circle_filled(360,120,25, arcade.csscolor.DARK_GREEN)
+arcade.draw_rectangle_filled(400, 55, 5, 60, arcade.csscolor.BLACK)
 
 # Draw a mountain using a polygon
 arcade.draw_polygon_filled(((500, 450),
