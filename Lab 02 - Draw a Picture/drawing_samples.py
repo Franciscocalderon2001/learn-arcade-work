@@ -52,23 +52,23 @@ arcade.draw_ellipse_filled(200, 150, 60, 80, arcade.csscolor.DARK_GREEN)
 # Arc is centered at (300, 340) with a width of 60 and height of 100.
 # The starting angle is 0, and ending angle is 180.
 arcade.draw_rectangle_filled(300, 300, 20, 60, arcade.csscolor.BROWN)
-arcade.draw_arc_filled(300, 320, 60, 100, arcade.csscolor.DARK_GREEN, 0, 180)
 
-# Another tree, with a trunk and triangle for top
+
+# House with a triangular roof and arc door
 # Triangle is made of these three points:
 # (400, 400), (370, 320), (430, 320)
 arcade.draw_rectangle_filled(400, 100, 150, 150, arcade.csscolor.WHITE)
 arcade.draw_triangle_filled(400, 300, 305, 175, 500, 175, arcade.csscolor.BROWN)
+arcade.draw_arc_filled(400, 25, 80, 120, arcade.csscolor.DARK_GREEN, 0, 180)
 
-# Draw a tree using a polygon with a list of points
-arcade.draw_rectangle_filled(500, 300, 10, 60, arcade.csscolor.SANDY_BROWN)
-arcade.draw_polygon_filled(((500, 400),
-                            (480, 360),
-                            (470, 320),
-                            (530, 320),
-                            (520, 360)
+# Draw a mountain using a polygon
+arcade.draw_polygon_filled(((500, 450),
+                            (400, 390),
+                            (360, 300),
+                            (630, 300),
+                            (590, 390)
                             ),
-                           arcade.csscolor.DARK_GREEN)
+                           arcade.csscolor.SADDLE_BROWN)
 
 # Draw a sun
 arcade.draw_circle_filled(500, 550, 40, arcade.color.YELLOW)
