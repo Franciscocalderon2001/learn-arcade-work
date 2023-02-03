@@ -40,22 +40,25 @@ arcade.draw_lrtb_rectangle_filled(0, 599, 300, 0, arcade.csscolor.GREEN)
 # arcade.draw_rectangle_outline(300, 300, 350, 200, arcade.csscolor.BLACK, 3)
 # arcade.draw_ellipse_outline(300,300,350,200, arcade.csscolor.RED, 3)
 
-# Drew a elliptic pond
-arcade.draw_ellipse_filled(180, 140, 150, 200, arcade.csscolor.DARK_BLUE)
+def draw_pond(x,y):
+    # Drew a elliptic pond
+    arcade.draw_ellipse_filled(180, 140, 150, 200, arcade.csscolor.DARK_BLUE)
 
-# House with a triangular roof and arc door, also a two windows
-# Triangle is made of these three points:
-# (400, 400), (370, 320), (430, 320)
-arcade.draw_rectangle_filled(400, 100, 150, 150, arcade.csscolor.WHITE)
-arcade.draw_triangle_filled(400, 300, 305, 175, 500, 175, arcade.csscolor.BROWN)
-arcade.draw_arc_filled(400, 25, 80, 120, arcade.csscolor.BLANCHED_ALMOND, 0, 180)
-arcade.draw_circle_filled(440,120,25, arcade.csscolor.BLACK)
-arcade.draw_circle_filled(360,120,25, arcade.csscolor.BLACK)
-arcade.draw_circle_filled(440,120,23, arcade.csscolor.WHITE)
-arcade.draw_circle_filled(360,120,23, arcade.csscolor.WHITE)
-arcade.draw_circle_filled(410,45,5, arcade.csscolor.BLACK)
-arcade.draw_circle_filled(390,45,5, arcade.csscolor.BLACK)
-arcade.draw_rectangle_filled(400, 55, 5, 60, arcade.csscolor.BLACK)
+
+def draw_house(x,y):
+    # House with a triangular roof and arc door, also a two windows
+    # Triangle is made of these three points:
+    # (400, 400), (370, 320), (430, 320)
+    arcade.draw_rectangle_filled(400, 100, 150, 150, arcade.csscolor.WHITE)
+    arcade.draw_triangle_filled(400, 300, 305, 175, 500, 175, arcade.csscolor.BROWN)
+    arcade.draw_arc_filled(400, 25, 80, 120, arcade.csscolor.BLANCHED_ALMOND, 0, 180)
+    arcade.draw_circle_filled(440,120,25, arcade.csscolor.BLACK)
+    arcade.draw_circle_filled(360,120,25, arcade.csscolor.BLACK)
+    arcade.draw_circle_filled(440,120,23, arcade.csscolor.WHITE)
+    arcade.draw_circle_filled(360,120,23, arcade.csscolor.WHITE)
+    arcade.draw_circle_filled(410,45,5, arcade.csscolor.BLACK)
+    arcade.draw_circle_filled(390,45,5, arcade.csscolor.BLACK)
+    arcade.draw_rectangle_filled(400, 55, 5, 60, arcade.csscolor.BLACK)
 
 # Draw a mountain using a polygon
 arcade.draw_polygon_filled(((500, 450),
