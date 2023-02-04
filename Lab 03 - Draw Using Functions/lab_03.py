@@ -15,16 +15,16 @@ def draw_pond(x, y):
 
 
 def draw_house(x, y):
-    arcade.draw_rectangle_filled(400 + x, 100 + y, 150, 150, arcade.csscolor.WHITE)
-    arcade.draw_triangle_filled(400 + x, 300 + y, 305 + x, 175 + y, 500 + x, 175 + y, arcade.csscolor.BROWN)
-    arcade.draw_arc_filled(400 + x, 25 + y, 80, 120, arcade.csscolor.BLANCHED_ALMOND, 0, 180)
-    arcade.draw_circle_filled(440 + x, 120 + y, 25, arcade.csscolor.BLACK)
-    arcade.draw_circle_filled(360 + x, 120 + y, 25, arcade.csscolor.BLACK)
-    arcade.draw_circle_filled(440 + x, 120 + y, 23, arcade.csscolor.WHITE)
-    arcade.draw_circle_filled(360 + x, 120 + y, 23, arcade.csscolor.WHITE)
-    arcade.draw_circle_filled(410 + x, 45 + y, 5, arcade.csscolor.BLACK)
-    arcade.draw_circle_filled(390 + x, 45 + y, 5, arcade.csscolor.BLACK)
-    arcade.draw_rectangle_filled(400 + x, 55 + y, 5, 60, arcade.csscolor.BLACK)
+    arcade.draw_rectangle_filled(400 + x, 100 + y, 125, 125, arcade.csscolor.WHITE)
+    arcade.draw_triangle_filled(400 + x, 250 + y, 320 + x, 140 + y, 485 + x, 140 + y, arcade.csscolor.BROWN)
+    arcade.draw_arc_filled(400 + x, 38 + y, 70, 100, arcade.csscolor.BLANCHED_ALMOND, 0, 180)
+    arcade.draw_circle_filled(435 + x, 110 + y, 20, arcade.csscolor.BLACK)  # big circles
+    arcade.draw_circle_filled(365 + x, 110 + y, 20, arcade.csscolor.BLACK)  # big circles
+    arcade.draw_circle_filled(435 + x, 110 + y, 18, arcade.csscolor.LIGHT_GRAY)  # thin circles
+    arcade.draw_circle_filled(365 + x, 110 + y, 18, arcade.csscolor.LIGHT_GRAY)  # thin circles
+    arcade.draw_circle_filled(410 + x, 50 + y, 4, arcade.csscolor.BLACK)  # small circles
+    arcade.draw_circle_filled(390 + x, 50 + y, 4, arcade.csscolor.BLACK)  # small circles
+    arcade.draw_rectangle_filled(400 + x, 63 + y, 4, 50, arcade.csscolor.BLACK)
 
 
 def draw_mountain(x, y):
@@ -35,6 +35,18 @@ def draw_mountain(x, y):
                                 (590 + x, 390 + y)
                                 ),
                                arcade.csscolor.SADDLE_BROWN)
+
+
+def draw_dark_mountain(x, y):
+    arcade.draw_polygon_filled(((500 + x, 450 + y),
+                                (400 + x, 390 + y),
+                                (360 + x, 300 + y),
+                                (630 + x, 300 + y),
+                                (590 + x, 390 + y)
+                                ),
+                               arcade.csscolor.ROSY_BROWN)
+
+
 def draw_tree(x, y):
     arcade.draw_rectangle_filled(50 + x, 300 + y, 20, 60, arcade.csscolor.ROSY_BROWN)
     arcade.draw_circle_filled(50 + x, 330 + y, 30, arcade.csscolor.DARK_GREEN)
@@ -65,11 +77,34 @@ def main():
 
     draw_grass()
     draw_text(0, 0)
-    draw_sun(0, 0)
+    draw_sun(70, 20)
+
+
+    draw_dark_mountain(-210, 0)
+
+    draw_mountain(-380, 0)
     draw_mountain(0, 0)
-    draw_house(-100, 250)
+
+    draw_house(-220, 250)
+    draw_house(100, 250)
+
     draw_pond(0, 0)
+    draw_pond(320, 0)
+
     draw_tree(0, 0)
+    draw_tree(0, -65)
+    draw_tree(0, -130)
+    draw_tree(0, -195)
+    draw_tree(0, -260)
+    draw_tree(0, -325)
+    draw_tree(270,0)
+    draw_tree(270, -65)
+    draw_tree(270, -130)
+    draw_tree(270, -195)
+    draw_tree(270, -260)
+    draw_tree(270, -325)
+
+
 
     arcade.finish_render()
     arcade.run()
