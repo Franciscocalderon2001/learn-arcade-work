@@ -1,114 +1,78 @@
-
 # Created by: Francisco Calderon
-
-# These are pretty cool.
-# Import math as an example
-
-import math
-
-print(math.cos(1))
-
-# Import the "arcade" library...
 
 import arcade
 
-arcade.open_window(600, 600, "Drawing Example")
-
-# Set the background color
-arcade.set_background_color(arcade.csscolor.SKY_BLUE)
-
-# Get ready to draw
-arcade.start_render()
-
-# Draw a rectangle
-# Left of 0, right of 599
-# Top of 300, bottom of 0
-arcade.draw_lrtb_rectangle_filled(0, 599, 300, 0, arcade.csscolor.GREEN)
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
 
 
-# Draw an ellipse and rect with
-# a center of (300,300)
-# width of 350
-# height of 200
-# arcade.draw_rectangle_outline(300, 300, 350, 200, arcade.csscolor.BLACK, 3)
-# arcade.draw_ellipse_outline(300,300,350,200, arcade.csscolor.RED, 3)
-
-# Drew a elliptic pond
-arcade.draw_ellipse_filled(180, 140, 150, 200, arcade.csscolor.DARK_BLUE)
-
-# House with a triangular roof and arc door, also a two windows
-# Triangle is made of these three points:
-# (400, 400), (370, 320), (430, 320)
-arcade.draw_rectangle_filled(400, 100, 150, 150, arcade.csscolor.WHITE)
-arcade.draw_triangle_filled(400, 300, 305, 175, 500, 175, arcade.csscolor.BROWN)
-arcade.draw_arc_filled(400, 25, 80, 120, arcade.csscolor.BLANCHED_ALMOND, 0, 180)
-arcade.draw_circle_filled(440,120,25, arcade.csscolor.BLACK)
-arcade.draw_circle_filled(360,120,25, arcade.csscolor.BLACK)
-arcade.draw_circle_filled(440,120,23, arcade.csscolor.WHITE)
-arcade.draw_circle_filled(360,120,23, arcade.csscolor.WHITE)
-arcade.draw_circle_filled(410,45,5, arcade.csscolor.BLACK)
-arcade.draw_circle_filled(390,45,5, arcade.csscolor.BLACK)
-arcade.draw_rectangle_filled(400, 55, 5, 60, arcade.csscolor.BLACK)
-
-# Draw a mountain using a polygon
-arcade.draw_polygon_filled(((500, 450),
-                            (400, 390),
-                            (360, 300),
-                            (630, 300),
-                            (590, 390)
-                            ),
-                           arcade.csscolor.SADDLE_BROWN)
-
-# Tree with circle top all around fence of the house
-arcade.draw_rectangle_filled(50, 300, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(50,330,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(150, 300, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(150,330,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(250, 300, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(250,330,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(350, 300, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(350,330,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(450, 300, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(450,330,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(550, 300, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(550,330,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(550, 200, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(550,230,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(550, 100, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(550,130,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(550, 0, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(550,30,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(50, 200, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(50,230,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(50, 100, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(50,130,30, arcade.csscolor.DARK_GREEN)
-arcade.draw_rectangle_filled(50, 0, 20, 60, arcade.csscolor.ROSY_BROWN)
-arcade.draw_circle_filled(50,30,30, arcade.csscolor.DARK_GREEN)
+def draw_grass():
+    arcade.draw_lrtb_rectangle_filled(0, SCREEN_WIDTH, SCREEN_HEIGHT / 2, 0, arcade.color.FOREST_GREEN)
 
 
-# Draw a sun
-arcade.draw_circle_filled(500, 550, 40, arcade.color.YELLOW)
+def draw_pond(x, y):
+    arcade.draw_ellipse_filled(180 + x, 140 + y, 150, 200, arcade.csscolor.DARK_BLUE)
 
-# Rays to the left, right, up, and down
-arcade.draw_line(500, 550, 400, 550, arcade.color.YELLOW, 3)
-arcade.draw_line(500, 550, 600, 550, arcade.color.YELLOW, 3)
-arcade.draw_line(500, 550, 500, 450, arcade.color.YELLOW, 3)
-arcade.draw_line(500, 550, 500, 650, arcade.color.YELLOW, 3)
 
-# Diagonal rays
-arcade.draw_line(500, 550, 550, 600, arcade.color.YELLOW, 3)
-arcade.draw_line(500, 550, 550, 500, arcade.color.YELLOW, 3)
-arcade.draw_line(500, 550, 450, 600, arcade.color.YELLOW, 3)
-arcade.draw_line(500, 550, 450, 500, arcade.color.YELLOW, 3)
+def draw_house(x, y):
+    arcade.draw_rectangle_filled(400 + x, 100 + y, 150, 150, arcade.csscolor.WHITE)
+    arcade.draw_triangle_filled(400 + x, 300 + y, 305 + x, 175 + y, 500 + x, 175 + y, arcade.csscolor.BROWN)
+    arcade.draw_arc_filled(400 + x, 25 + y, 80, 120, arcade.csscolor.BLANCHED_ALMOND, 0, 180)
+    arcade.draw_circle_filled(440 + x, 120 + y, 25, arcade.csscolor.BLACK)
+    arcade.draw_circle_filled(360 + x, 120 + y, 25, arcade.csscolor.BLACK)
+    arcade.draw_circle_filled(440 + x, 120 + y, 23, arcade.csscolor.WHITE)
+    arcade.draw_circle_filled(360 + x, 120 + y, 23, arcade.csscolor.WHITE)
+    arcade.draw_circle_filled(410 + x, 45 + y, 5, arcade.csscolor.BLACK)
+    arcade.draw_circle_filled(390 + x, 45 + y, 5, arcade.csscolor.BLACK)
+    arcade.draw_rectangle_filled(400 + x, 55 + y, 5, 60, arcade.csscolor.BLACK)
 
-# Draw text at (150, 230) with a font size of 24 pts.
-arcade.draw_text("Beautiful Sunny Day!",
-                 50, 500,
-                 arcade.color.BLACK, 24)
 
-# Finish drawing
-arcade.finish_render()
+def draw_mountain(x, y):
+    arcade.draw_polygon_filled(((500 + x, 450 + y),
+                                (400 + x, 390 + y),
+                                (360 + x, 300 + y),
+                                (630 + x, 300 + y),
+                                (590 + x, 390 + y)
+                                ),
+                               arcade.csscolor.SADDLE_BROWN)
+def draw_tree(x, y):
+    arcade.draw_rectangle_filled(50 + x, 300 + y, 20, 60, arcade.csscolor.ROSY_BROWN)
+    arcade.draw_circle_filled(50 + x, 330 + y, 30, arcade.csscolor.DARK_GREEN)
 
-# Keep the window up until someone closes it.
 
-arcade.run()
+def draw_sun(x, y):
+    arcade.draw_circle_filled(500 + x, 550 + y, 40, arcade.color.YELLOW)
+    arcade.draw_line(500 + x, 550 + y, 400 + x, 550 + y, arcade.color.YELLOW, 3)
+    arcade.draw_line(500 + x, 550 + y, 600 + x, 550 + y, arcade.color.YELLOW, 3)
+    arcade.draw_line(500 + x, 550 + y, 500 + x, 450 + y, arcade.color.YELLOW, 3)
+    arcade.draw_line(500 + x, 550 + y, 500 + x, 650 + y, arcade.color.YELLOW, 3)
+    arcade.draw_line(500 + x, 550 + y, 550 + x, 600 + y, arcade.color.YELLOW, 3)
+    arcade.draw_line(500 + x, 550 + y, 550 + x, 500 + y, arcade.color.YELLOW, 3)
+    arcade.draw_line(500 + x, 550 + y, 450 + x, 600 + y, arcade.color.YELLOW, 3)
+    arcade.draw_line(500 + x, 550 + y, 450 + x, 500 + y, arcade.color.YELLOW, 3)
+
+
+def draw_text(x, y):
+    arcade.draw_text("Wonderful Day To Be Outside!",
+                     10 + x, 560 + y,
+                     arcade.color.BLACK, 24)
+
+
+def main():
+    arcade.open_window(SCREEN_HEIGHT, SCREEN_HEIGHT, "Drawing Example")
+    arcade.set_background_color(arcade.color.SKY_BLUE)
+    arcade.start_render()
+
+    draw_grass()
+    draw_text(0, 0)
+    draw_sun(0, 0)
+    draw_mountain(0, 0)
+    draw_house(-100, 250)
+    draw_pond(0, 0)
+    draw_tree(0, 0)
+
+    arcade.finish_render()
+    arcade.run()
+
+
+main()
