@@ -80,7 +80,7 @@ def main():
     draw_sun(70, 20)
 
 
-    draw_dark_mountain(-210, 0)
+    draw_dark_mountain(-200, 0)
 
     draw_mountain(-380, 0)
     draw_mountain(0, 0)
@@ -103,6 +103,13 @@ def main():
     draw_tree(270, -195)
     draw_tree(270, -260)
     draw_tree(270, -325)
+    draw_tree(560, 0)
+    draw_tree(560, -65)
+    draw_tree(560, -130)
+    draw_tree(560, -195)
+    draw_tree(560, -260)
+    draw_tree(560, -325)
+
 
 
 
