@@ -79,7 +79,6 @@ def main():
     draw_text(0, 0)
     draw_sun(70, 20)
 
-
     draw_dark_mountain(-200, 0)
 
     draw_mountain(-380, 0)
@@ -97,7 +96,7 @@ def main():
     draw_tree(0, -195)
     draw_tree(0, -260)
     draw_tree(0, -325)
-    draw_tree(270,0)
+    draw_tree(270, 0)
     draw_tree(270, -65)
     draw_tree(270, -130)
     draw_tree(270, -195)
@@ -109,9 +108,6 @@ def main():
     draw_tree(560, -195)
     draw_tree(560, -260)
     draw_tree(560, -325)
-
-
-
 
     arcade.finish_render()
     arcade.run()
