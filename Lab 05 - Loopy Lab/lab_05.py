@@ -94,7 +94,7 @@ def draw_section_6():
 def draw_section_7():
     for row in range(30):
         for column in range(30):
-            if column < row:
+            if row >= column:
                 x = column * 10 + 605  # Instead of zero, calculate the proper x location using 'column'
                 y = row * 10 + 305  # Instead of zero, calculate the proper y location using 'row'
                 arcade.draw_rectangle_filled(x, y, 5, 5, arcade.color.WHITE)
@@ -105,7 +105,7 @@ def draw_section_7():
 def draw_section_8():
     for row in range(30):
         for column in range(30):
-            if column > 30 - row:
+            if column >= 29 - row:
                 x = column * 10 + 905  # Instead of zero, calculate the proper x location using 'column'
                 y = row * 10 + 305  # Instead of zero, calculate the proper y location using 'row'
                 arcade.draw_rectangle_filled(x, y, 5, 5, arcade.color.WHITE)
