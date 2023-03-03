@@ -4,7 +4,7 @@ weapon = False
 def strangeCreature():
     actions = ["fight", "flee"]
     global weapon
-    print("A strange goul-like creature has appeared. You can either run or fight it. What would you like to do?")
+    print("A strange wolf-like creature has appeared. You can either run or fight it. What would you like to do?")
     userInput = ""
     while userInput not in actions:
         print("Options: flee/fight")
@@ -12,9 +12,9 @@ def strangeCreature():
         if userInput == "fight":
             if weapon:
                 print(
-                    "You kill the goul with the knife you found earlier. After moving forward, you find one of the exits. Congats!")
+                    "You kill the wolf with the knife you found earlier. After moving forward, you find one of the exits. Congratulations!")
             else:
-                print("The goul-like creature has killed you.")
+                print("The wolf-like creature has killed you.")
             quit()
         elif userInput == "flee":
             showSkeletons()
@@ -60,10 +60,10 @@ def hauntedRoom():
             print("Please enter a valid option.")
 
 
-def cameraScene():
+def backpackScene():
     directions = ["forward", "backward"]
     print(
-        "You see a camera that has been dropped on the ground. Someone has been here recently. Where would you like to go?")
+        "You discover an empty backpack that has been dropped on the ground. Someone has been here recently. Where would you like to go?")
     userInput = ""
     while userInput not in directions:
         print("Options: forward/backward")
@@ -116,11 +116,11 @@ def introScene():
 
 if __name__ == "__main__":
     while True:
-        print("Welcome to the Adventure Game!")
-        print("As an avid traveller, you have decided to visit the Catacombs of Paris.")
-        print("However, during your exploration, you find yourself lost.")
+        print("Welcome to Tito's Mansion!")
+        print("As a curious traveller, you have decided to visit the Catacombs of Tito's Mansion.")
+        print("However, throughout your exploration, you find yourself lost.")
         print("You can choose to walk in multiple directions to find a way out.")
-        print("Let's start with your name: ")
+        print("Let's begin with your name: ")
         name = input()
-        print("Good luck, " + name + ".")
+        print("Best of luck, " + name + ".")
         introScene()
