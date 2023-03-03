@@ -9,43 +9,43 @@ class Room:
 
 def main():
     room_list = []
-    # main room/ intro room
+    # main room/ intro room (0)
     room = Room(
         "You are at a crossroads, and you can choose to go down any of the four hallways. Where would you like to go?",
         None, 2, 1, 4)
 
-    room_list.append(room)  # cursed room
+    room_list.append(room)  # cursed room (1)
     room = Room(
         "You have arrived in the cursed room.\nYou hear strange voices. You think you have awoken some of the dead. "
         "Where would you like to go?",
-        0, 9, None, 10)
+        0, 7, None, 8)
 
-    room_list.append(room)  # dead spider room
+    room_list.append(room)  # dead spider room (2)
     room = Room(
         "You see a wall of dead spiders as you walk into the room. Somebody is watching you. Where would you like "
         "to go?", None, 3, None, 0)
 
-    room_list.append(room)  # strange creature room
+    room_list.append(room)  # strange creature room (3)
     room = Room("A strange wolf-like creature has appeared. You can either run or fight it. What would you like to do?",
                 None, None, None, 2)
 
-    room_list.append(room)  # ghost figure room
+    room_list.append(room)  # ghost figure room (4)
     room = Room(
         "You see a dark transparent figure appear in the distance. Chills run down your spine. Where would you like "
-        "to go?", 6, 0, None, None)
+        "to go?", 5, 0, None, None)
 
-    room_list.append(room)  # backpack room
+    room_list.append(room)  # backpack room (5)
     room = Room(
         "You discover an empty backpack that has been dropped on the ground. Someone has been here recently. Where "
-        "would you like to go?", 7, None, 4, None)
+        "would you like to go?", 6, None, 5, None)
 
-    room_list.append(room)  # exit number eight
-    room = Room("You made it! You've found an exit.", None, None, 6, None)
+    room_list.append(room)  # exit number (6)
+    room = Room("You made it! You've found an exit.", None, None, 5, None)
 
-    room_list.append(room)  # exit number ten
+    room_list.append(room)  # exit number (7)
     room = Room("You made it! You've found an exit.", None, None, None, 1)
 
-    room_list.append(room)  # Death room eleven
+    room_list.append(room)  # Death room (8)
     room = Room("Multiple bleeding zombies start emerging as you enter the room. You are killed.", None, 1, None, None)
 
     room_list.append(room)
