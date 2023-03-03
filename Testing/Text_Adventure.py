@@ -34,7 +34,8 @@ def main():
 
     room_list.append(room)  # backpack room (5)
     room = Room(
-        "You discover an empty backpack that has been dropped on the ground. Someone has been here recently.", 6, None, 5, None)
+        "You discover an empty backpack that has been dropped on the ground. Someone has been here recently.", 6, None,
+        5, None)
 
     room_list.append(room)  # exit number (6)
     room = Room("You made it! You've found an exit.", None, None, 5, None)
@@ -307,4 +308,6 @@ def main():
             print("Dead end/ Wall encountered")
         else:
             current_room = next_room
+
+
 main()
