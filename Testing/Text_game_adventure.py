@@ -12,7 +12,8 @@ def strangeCreature():
         if userInput == "fight":
             if weapon:
                 print(
-                    "You kill the wolf with the knife you found earlier. After moving forward, you find one of the exits. Congratulations!")
+                    "You kill the wolf-like creature with the knife you found earlier. After moving forward, "
+                    "you find one of the exits. Congratulations!")
             else:
                 print("The wolf-like creature has killed you.")
             quit()
@@ -23,19 +24,20 @@ def strangeCreature():
 
 
 def showDeadSpiders():
-    directions = ["backward", "forward"]
+    directions = ["west", "north", "east"]
     global weapon
-    print("You see a wall of dead spiders as you walk into the room. Somebody is watching you. Where would you like to go?")
+    print("You see a wall of dead spiders as you walk into the room. Somebody is watching you. Where would you like "
+          "to go?")
     userInput = ""
     while userInput not in directions:
-        print("Options: left/backward/forward")
+        print("Options: west/north/east")
         userInput = input()
-        if userInput == "left":
+        if userInput == "north":
             print("You find that this door opens into a wall. You open some of the drywall to discover a knife.")
             weapon = True
-        elif userInput == "backward":
+        elif userInput == "west":
             introScene()
-        elif userInput == "forward":
+        elif userInput == "east":
             strangeCreature()
         else:
             print("Please enter a valid option.")
@@ -80,7 +82,8 @@ def backpackScene():
 
 def showGhostFigure():
     directions = ["north", "south", "east"]
-    print("You see a dark transparent figure appear in the distance. You are creeped out. Where would you like to go?")
+    print("You see a dark transparent figure appear in the distance. Chills run down your spine. Where would you like "
+          "to go?")
     userInput = ""
     while userInput not in directions:
         print("Options: north/south/east")
