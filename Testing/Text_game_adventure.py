@@ -17,15 +17,15 @@ def strangeCreature():
                 print("The wolf-like creature has killed you.")
             quit()
         elif userInput == "flee":
-            showSkeletons()
+            showDeadSpiders()
         else:
             print("Please enter a valid option.")
 
 
-def showSkeletons():
+def showDeadSpiders():
     directions = ["backward", "forward"]
     global weapon
-    print("You see a wall of skeletons as you walk into the room. Someone is watching you. Where would you like to go?")
+    print("You see a wall of dead spiders as you walk into the room. Somebody is watching you. Where would you like to go?")
     userInput = ""
     while userInput not in directions:
         print("Options: left/backward/forward")
@@ -41,20 +41,20 @@ def showSkeletons():
             print("Please enter a valid option.")
 
 
-def hauntedRoom():
-    directions = ["right", "left", "backward"]
+def cursedRoom():
+    directions = ["north", "west", "east"]
     print("You hear strange voices. You think you have awoken some of the dead. Where would you like to go?")
     userInput = ""
     while userInput not in directions:
-        print("Options: right/left/backward")
+        print("Options: north/west/east")
         userInput = input()
-        if userInput == "right":
-            print("Multiple goul-like creatures start emerging as you enter the room. You are killed.")
+        if userInput == "west":
+            print("Multiple bleeding zombies start emerging as you enter the room. You are killed.")
             quit()
-        elif userInput == "left":
+        elif userInput == "east":
             print("You made it! You've found an exit.")
             quit()
-        elif userInput == "backward":
+        elif userInput == "north":
             introScene()
         else:
             print("Please enter a valid option.")
@@ -63,7 +63,8 @@ def hauntedRoom():
 def backpackScene():
     directions = ["north", "south"]
     print(
-        "You discover an empty backpack that has been dropped on the ground. Someone has been here recently. Where would you like to go?")
+        "You discover an empty backpack that has been dropped on the ground. Someone has been here recently. Where "
+        "would you like to go?")
     userInput = ""
     while userInput not in directions:
         print("Options: north/south")
@@ -72,7 +73,7 @@ def backpackScene():
             print("You made it! You've found an exit.")
             quit()
         elif userInput == "south":
-            showShadowFigure()
+            showGhostFigure()
         else:
             print("Please enter a valid option.")
 
@@ -95,20 +96,20 @@ def showGhostFigure():
 
 
 def introScene():
-    directions = ["left", "right", "forward"]
+    directions = ["south", "north", "east", "west"]
     print(
         "You are at a crossroads, and you can choose to go down any of the four hallways. Where would you like to go?")
     userInput = ""
     while userInput not in directions:
-        print("Options: left/right/backward/forward")
+        print("Options: south/north/east/west")
         userInput = input()
-        if userInput == "left":
-            showShadowFigure()
-        elif userInput == "right":
-            showSkeletons()
-        elif userInput == "forward":
-            hauntedRoom()
-        elif userInput == "backward":
+        if userInput == "south":
+            showGhostFigure()
+        elif userInput == "east":
+            showDeadSpiders()
+        elif userInput == "south":
+            cursedRoom()
+        elif userInput == "north":
             print("You find that this door opens into a wall.")
         else:
             print("Please enter a valid option.")
