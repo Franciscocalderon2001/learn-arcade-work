@@ -17,7 +17,7 @@ def main():
 
     room_list.append(room)  # cursed room (1)
     room = Room(
-        "You have arrived in the cursed room.\nYou hear strange voices. You think you have awoken some of the dead.",
+        "You have arrived in the cursed room.\nYou hear strange voices. You believe you have awoken some of the dead.",
         0, 7, None, 8)
 
     room_list.append(room)  # dead spider room (2)
