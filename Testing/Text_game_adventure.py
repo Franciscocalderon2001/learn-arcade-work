@@ -61,34 +61,34 @@ def hauntedRoom():
 
 
 def backpackScene():
-    directions = ["forward", "backward"]
+    directions = ["north", "south"]
     print(
         "You discover an empty backpack that has been dropped on the ground. Someone has been here recently. Where would you like to go?")
     userInput = ""
     while userInput not in directions:
-        print("Options: forward/backward")
+        print("Options: north/south")
         userInput = input()
-        if userInput == "forward":
+        if userInput == "north":
             print("You made it! You've found an exit.")
             quit()
-        elif userInput == "backward":
+        elif userInput == "south":
             showShadowFigure()
         else:
             print("Please enter a valid option.")
 
 
-def showShadowFigure():
-    directions = ["right", "backward"]
-    print("You see a dark shadowy figure appear in the distance. You are creeped out. Where would you like to go?")
+def showGhostFigure():
+    directions = ["north", "south", "east"]
+    print("You see a dark transparent figure appear in the distance. You are creeped out. Where would you like to go?")
     userInput = ""
     while userInput not in directions:
-        print("Options: right/left/backward")
+        print("Options: north/south/east")
         userInput = input()
-        if userInput == "right":
-            cameraScene()
-        elif userInput == "left":
+        if userInput == "north":
+            backpackScene()
+        elif userInput == "south":
             print("You find that this door opens into a wall.")
-        elif userInput == "backward":
+        elif userInput == "east":
             introScene()
         else:
             print("Please enter a valid option.")
