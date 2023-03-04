@@ -17,24 +17,28 @@ def main():
 
     room_list.append(room)  # cursed room (1)
     room = Room(
-        "You have arrived in the cursed room.\nYou hear strange voices. You believe you have awoken some of the dead.",
+        "You have arrived in the cursed room.\nYou hear strange voices. You believe you have awoken some of the dead.\n"
+        "You see a hall East and one West.",
         0, 7, None, 8)
 
     room_list.append(room)  # dead spider room (2)
     room = Room(
-        "You see a wall of dead spiders as you walk into the room. Somebody is watching you.", None, 3, None, 0)
+        "You see a wall of dead spiders as you walk into the room. Somebody is watching you. "
+        "You see a door North and a hallway going East.", None, 3, None, 0)
 
     room_list.append(room)  # strange creature room (3)
-    room = Room("A strange wolf-like creature has appeared. Run away!",
+    room = Room("A strange wolf-like creature has appeared. Run away! Head back West.",
                 None, None, None, 2)
 
     room_list.append(room)  # ghost figure room (4)
     room = Room(
-        "You see a dark transparent figure appear in the distance. Chills run down your spine.", 5, 0, None, None)
+        "You see a dark transparent figure appear in the distance. Chills run down your spine."
+        "There is a corridor heading North and a door South of you.", 5, 0, None, None)
 
     room_list.append(room)  # backpack room (5)
     room = Room(
-        "You discover an empty backpack that has been dropped on the ground. Someone has been here recently.", 6, None,
+        "You discover an empty backpack that has been dropped on the ground. Someone has been here recently.\n"
+        "There is a small passage headed North.", 6, None,
         5, None)
 
     room_list.append(room)  # exit number (6)
@@ -44,7 +48,7 @@ def main():
     room = Room("You made it! You've found an exit.", None, None, None, 1)
 
     room_list.append(room)  # Death room (8)
-    room = Room("Multiple bleeding zombies start emerging as you enter the room. You are killed.", None, 1, None, None)
+    room = Room("Multiple blood-oozing zombies start emerging as you enter the room. You are killed.", None, 1, None, None)
 
     room_list.append(room)
 
