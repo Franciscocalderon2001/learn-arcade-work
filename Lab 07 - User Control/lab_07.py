@@ -82,6 +82,35 @@ class Car:
             self.position_y = SCREEN_HEIGHT
 
 
+class Emoji:
+    def __init__(self, position_x, position_y, radius, color):
+        # Take the parameters of the init function above,
+        # and create instance variables out of them.
+        self.position_x = position_x
+        self.position_y = position_y
+        self.radius = radius
+        self.color = color
+
+    def draw(self):
+        """ Draw the balls with the instance variables we have. """
+        # emoji face
+        arcade.draw_circle_filled(self.position_x,
+                                  self.position_y,
+                                  self.radius,
+                                  self.color)
+        # emoji eyes
+        arcade.draw_circle_filled(self.position_x - 8,
+                                  self.position_y + 3,
+                                  4,
+                                  arcade.color.BLACK)
+        arcade.draw_circle_filled(self.position_x + 8,
+                                  self.position_y + 3,
+                                  4,
+                                  arcade.color.BLACK)
+        # emoji lips
+        arcade.draw_rectangle_filled(self.position_x, self.position_y - 10, 20, 4, arcade.color.BLACK)
+
+
 class MyGame(arcade.Window):
 
     def __init__(self, width, height, title):
@@ -92,6 +121,8 @@ class MyGame(arcade.Window):
         # Make the mouse disappear when it is over the window.
         # So we just see our object, not the pointer.
         self.set_mouse_visible(False)
+
+        self.emoji = Emoji(50, 500, 20, arcade.color.YELLOW)
 
         self.car = Car(200, 350, 0, 0, 150, 50, arcade.color.RED)
 
@@ -115,10 +146,18 @@ class MyGame(arcade.Window):
 
         draw_street()
 
+        self.emoji.draw()
+
         self.car.draw()
 
     def update(self, delta_time):
         self.car.update()
+
+    def on_mouse_motion(self, x, y, dx, dy):
+        """ Called to update our objects.
+        Happens approximately 60 times per second."""
+        self.emoji.position_x = x
+        self.emoji.position_y = y
 
     def on_key_press(self, key, modifiers):
         """ Called whenever the user presses a key. """
