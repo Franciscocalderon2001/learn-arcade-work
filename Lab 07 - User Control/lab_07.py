@@ -49,46 +49,37 @@ def draw_sun(x, y):
     arcade.draw_line(500 + x, 550 + y, 450 + x, 500 + y, arcade.color.YELLOW, 3)
 
 
-def draw_car(x, y):
-    arcade.draw_rectangle_filled(300, 370, 100, 100, arcade.color.RED)
-    arcade.draw_rectangle_filled(300, 340, 200, 50, arcade.color.RED)
-    arcade.draw_rectangle_filled(325, 380, 50, 30, arcade.color.BLEU_DE_FRANCE)
-    arcade.draw_rectangle_filled(385, 345, 30, 15, arcade.color.YELLOW)
-
-
-class Ball:
-    def __init__(self, position_x, position_y, change_x, change_y, radius, color):
-
-        # Take the parameters of the init function above,
-        # and create instance variables out of them.
+class Car:
+    def __init__(self, position_x, position_y, change_x, change_y, width, height, color):
         self.position_x = position_x
         self.position_y = position_y
         self.change_x = change_x
         self.change_y = change_y
-        self.radius = radius
+        self.width = width
+        self.height = height
         self.color = color
 
     def draw(self):
-        """ Draw the balls with the instance variables we have. """
-        arcade.draw_circle_filled(self.position_x, self.position_y, self.radius, self.color)
+        # Draw the car body
+        arcade.draw_rectangle_filled(self.position_x, self.position_y, self.width, self.height, self.color)
+        # Draw the wheels
+        arcade.draw_circle_filled(self.position_x - 35, self.position_y - 30, 20, arcade.color.BLACK)
+        arcade.draw_circle_filled(self.position_x + 35, self.position_y - 30, 20, arcade.color.BLACK)
+        # Draw the windshield
+        arcade.draw_triangle_filled(self.position_x - 40, self.position_y + 20, self.position_x + 40,
+                                    self.position_y + 20, self.position_x, self.position_y + 80, arcade.color.AERO_BLUE)
 
     def update(self):
-        # Move the ball
         self.position_y += self.change_y
         self.position_x += self.change_x
 
-        # See if the ball hit the edge of the screen. If so, change direction
-        if self.position_x < self.radius:
-            self.position_x = self.radius
+        # See if the car hit the edge of the screen. If so, change direction
 
-        if self.position_x > SCREEN_WIDTH - self.radius:
-            self.position_x = SCREEN_WIDTH - self.radius
+        if self.position_x > SCREEN_WIDTH:
+            self.position_x = SCREEN_WIDTH
 
-        if self.position_y < self.radius:
-            self.position_y = self.radius
-
-        if self.position_y > SCREEN_HEIGHT - self.radius:
-            self.position_y = SCREEN_HEIGHT - self.radius
+        if self.position_y > SCREEN_HEIGHT:
+            self.position_y = SCREEN_HEIGHT
 
 
 class MyGame(arcade.Window):
@@ -102,13 +93,13 @@ class MyGame(arcade.Window):
         # So we just see our object, not the pointer.
         self.set_mouse_visible(False)
 
-        # Create our ball
-        self.ball = Ball(50, 50, 0, 0, 15, arcade.color.BLACK_LEATHER_JACKET)
+        self.car = Car(200, 350, 0, 0, 150, 50, arcade.color.RED)
 
     def on_draw(self):
         """ Called whenever we need to draw the window. """
 
         arcade.start_render()
+
         draw_grass()
 
         draw_sun(275, 20)
@@ -124,30 +115,22 @@ class MyGame(arcade.Window):
 
         draw_street()
 
-        draw_car(0, 0)
-
-        self.ball.draw()
+        self.car.draw()
 
     def update(self, delta_time):
-        self.ball.update()
+        self.car.update()
 
     def on_key_press(self, key, modifiers):
         """ Called whenever the user presses a key. """
         if key == arcade.key.LEFT:
-            self.ball.change_x = -MOVEMENT_SPEED
+            self.car.change_x = -MOVEMENT_SPEED
         elif key == arcade.key.RIGHT:
-            self.ball.change_x = MOVEMENT_SPEED
-        elif key == arcade.key.UP:
-            self.ball.change_y = MOVEMENT_SPEED
-        elif key == arcade.key.DOWN:
-            self.ball.change_y = -MOVEMENT_SPEED
+            self.car.change_x = MOVEMENT_SPEED
 
     def on_key_release(self, key, modifiers):
         """ Called whenever a user releases a key. """
         if key == arcade.key.LEFT or key == arcade.key.RIGHT:
-            self.ball.change_x = 0
-        elif key == arcade.key.UP or key == arcade.key.DOWN:
-            self.ball.change_y = 0
+            self.car.change_x = 0
 
 
 def main():
