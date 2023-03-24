@@ -29,23 +29,11 @@ class Laser(arcade.Sprite):
         self.change_y = 0
 
     def update(self):
+        self.center_y -= 1
 
-        # Move laser
-        self.center_x += self.change_x
-        self.center_y += self.change_y
-
-        # Make it bounce
-        if self.left < 0:
-            self.change_x *= -1
-
-        if self.right > SCREEN_WIDTH:
-            self.change_x *= -1
-
-        if self.bottom < 0:
-            self.change_y *= -1
-
-        if self.top > SCREEN_HEIGHT:
-            self.change_y *= -1
+        # See if we went off-screen
+        if self.top < 0:
+            self.bottom = SCREEN_HEIGHT
 
 
 class Coin(arcade.Sprite):
