@@ -3,6 +3,12 @@
 import random
 import arcade
 
+laser_sound = arcade.load_sound(":resources:sounds/hurt3.wav")
+arcade.play_sound(laser_sound)
+
+capture_sound = arcade.load_sound(":resources:sounds/coin2.wav")
+arcade.play_sound(capture_sound)
+
 # --- Constants ---
 SPRITE_SCALING_PLAYER = 0.5
 SPRITE_SCALING_COIN = 0.25
@@ -173,9 +179,12 @@ class MyGame(arcade.Window):
         for coin in coins_hit_list:
             coin.remove_from_sprite_lists()
             self.score += 1
+            arcade.play_sound(capture_sound)
+
         for laser in laser_hit_list:
             laser.remove_from_sprite_lists()
             self.score -= 1
+            arcade.play_sound(laser_sound)
 
 
 def main():
