@@ -6,13 +6,14 @@ import arcade
 # --- Constants ---
 SPRITE_SCALING_PLAYER = 0.5
 SPRITE_SCALING_COIN = 0.25
-COIN_COUNT = 40
+COIN_COUNT = 50
 
 SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_HEIGHT = 700
 SCREEN_TITLE = "Lab 8"
 
 
+# Red laser class
 class Laser(arcade.Sprite):
 
     def __init__(self, filename, sprite_scaling):
@@ -90,7 +91,7 @@ class MyGame(arcade.Window):
         # Don't show the mouse cursor
         self.set_mouse_visible(False)
 
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.BLACK)
 
     def setup(self):
         """ Set up the game and initialize the variables. """
@@ -113,13 +114,13 @@ class MyGame(arcade.Window):
 
         # Create coins
         for i in range(COIN_COUNT):
-            laser = arcade.Sprite(":resources:images/space_shooter/laserRed01.png", SPRITE_SCALING_COIN)
+            laser = arcade.Sprite(":resources:images/space_shooter/laserRed01.png", SPRITE_SCALING_COIN + .25)
 
-            laser = Laser(":resources:images/space_shooter/laserRed01.png", SPRITE_SCALING_COIN)
+            laser = Laser(":resources:images/space_shooter/laserRed01.png", SPRITE_SCALING_COIN + .25)
 
-            coin = arcade.Sprite(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN)
+            coin = arcade.Sprite(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN + .5)
 
-            coin = Coin(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN)
+            coin = Coin(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN + .5)
 
             # position the coin
             coin.center_x = random.randrange(SCREEN_WIDTH)
@@ -142,7 +143,6 @@ class MyGame(arcade.Window):
         self.laser_list.draw()
         self.coin_list.draw()
         self.player_list.draw()
-
 
         # Put the text on the screen.
         output = f"Score: {self.score}"
