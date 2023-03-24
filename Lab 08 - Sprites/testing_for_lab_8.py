@@ -6,7 +6,7 @@ import arcade
 # --- Constants ---
 SPRITE_SCALING_PLAYER = 0.5
 SPRITE_SCALING_COIN = 0.25
-COIN_COUNT = 50
+COIN_COUNT = 30
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 700
@@ -118,9 +118,9 @@ class MyGame(arcade.Window):
 
             laser = Laser(":resources:images/space_shooter/laserRed01.png", SPRITE_SCALING_COIN + .25)
 
-            coin = arcade.Sprite(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN + .5)
+            coin = arcade.Sprite(":resources:images/alien/alienBlue_jump.png", SPRITE_SCALING_COIN)
 
-            coin = Coin(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN + .5)
+            coin = Coin(":resources:images/alien/alienBlue_jump.png", SPRITE_SCALING_COIN)
 
             # position the coin
             coin.center_x = random.randrange(SCREEN_WIDTH)
