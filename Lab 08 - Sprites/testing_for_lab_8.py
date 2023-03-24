@@ -13,6 +13,34 @@ SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Lab 8"
 
 
+class Laser(arcade.Sprite):
+
+    def __init__(self, filename, sprite_scaling):
+        super().__init__(filename, sprite_scaling)
+
+        self.change_x = 0
+        self.change_y = 0
+
+    def update(self):
+
+        # Move laser
+        self.center_x += self.change_x
+        self.center_y += self.change_y
+
+        # Make it bounce
+        if self.left < 0:
+            self.change_x *= -1
+
+        if self.right > SCREEN_WIDTH:
+            self.change_x *= -1
+
+        if self.bottom < 0:
+            self.change_y *= -1
+
+        if self.top > SCREEN_HEIGHT:
+            self.change_y *= -1
+
+
 class Coin(arcade.Sprite):
 
     def __init__(self, filename, sprite_scaling):
@@ -53,6 +81,7 @@ class MyGame(arcade.Window):
         # Variables that will hold sprites lists.
         self.player_list = None
         self.coin_list = None
+        self.laser_list = None
 
         # Player info
         self.player_sprite = None
@@ -69,6 +98,7 @@ class MyGame(arcade.Window):
         # Sprite lists
         self.player_list = arcade.SpriteList()
         self.coin_list = arcade.SpriteList()
+        self.laser_list = arcade.SpriteList()
 
         # Score
         self.score = 0
@@ -83,6 +113,10 @@ class MyGame(arcade.Window):
 
         # Create coins
         for i in range(COIN_COUNT):
+            laser = arcade.Sprite(":resources:images/space_shooter/laserRed01.png", SPRITE_SCALING_COIN)
+
+            laser = Laser(":resources:images/space_shooter/laserRed01.png", SPRITE_SCALING_COIN)
+
             coin = arcade.Sprite(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN)
 
             coin = Coin(":resources:images/space_shooter/meteorGrey_med2.png", SPRITE_SCALING_COIN)
@@ -93,13 +127,22 @@ class MyGame(arcade.Window):
             coin.change_x = random.randrange(-3, 4)
             coin.change_y = random.randrange(-3, 4)
 
+            laser.center_x = random.randrange(SCREEN_WIDTH)
+            laser.center_y = random.randrange(SCREEN_HEIGHT)
+            laser.change_x = random.randrange(-3, 4)
+            laser.change_y = random.randrange(-3, 4)
+
             # Add the coin to the lists
             self.coin_list.append(coin)
 
+            self.laser_list.append(laser)
+
     def on_draw(self):
         arcade.start_render()
+        self.laser_list.draw()
         self.coin_list.draw()
         self.player_list.draw()
+
 
         # Put the text on the screen.
         output = f"Score: {self.score}"
@@ -118,17 +161,21 @@ class MyGame(arcade.Window):
         # Call update on all sprites (The sprites don't do much in this
         # example though.)
         self.coin_list.update()
+        self.laser_list.update()
 
         # Generate a list of all sprites that collided with the player.
         coins_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                               self.coin_list)
+        laser_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
+                                                              self.laser_list)
 
         # Loop through each colliding sprite, remove it, and add to the score.
         for coin in coins_hit_list:
             coin.remove_from_sprite_lists()
             self.score += 1
-        # look back at lab hints
-            # put self.score -= 1 when
+        for laser in laser_hit_list:
+            laser.remove_from_sprite_lists()
+            self.score -= 1
 
 
 def main():
