@@ -102,8 +102,8 @@ class MyGame(arcade.Window):
         # Character image from kenney.nl
         self.player_sprite = arcade.Sprite(":resources:images/space_shooter/playerShip2_orange.png",
                                            SPRITE_SCALING_PLAYER)
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 50
+        self.player_sprite.center_x = 300
+        self.player_sprite.center_y = 300
         self.player_list.append(self.player_sprite)
 
         # Create coins
@@ -133,10 +133,15 @@ class MyGame(arcade.Window):
             self.laser_list.append(laser)
 
     def on_draw(self):
+
         arcade.start_render()
         self.laser_list.draw()
         self.coin_list.draw()
         self.player_list.draw()
+        if len(self.coin_list) == 0:
+            arcade.draw_text("Game Over can you get 30?",
+                             300, 400,
+                             arcade.color.WHITE, 30)
 
         # Put the text on the screen.
         output = f"Score: {self.score}"
@@ -151,7 +156,8 @@ class MyGame(arcade.Window):
 
     def update(self, delta_time):
         """ Movement and game logic """
-
+        if len(self.coin_list) == 0:
+            return
         # Call update on all sprites (The sprites don't do much in this
         # example though.)
         self.coin_list.update()
