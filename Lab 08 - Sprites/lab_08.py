@@ -139,7 +139,7 @@ class MyGame(arcade.Window):
         self.coin_list.draw()
         self.player_list.draw()
         if len(self.coin_list) == 0:
-            arcade.draw_text("Game Over can you get 30?",
+            arcade.draw_text("Game Over",
                              300, 400,
                              arcade.color.WHITE, 30)
 
