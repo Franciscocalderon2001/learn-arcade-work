@@ -2,7 +2,7 @@
 import arcade
 import random
 import os
-
+from pyglet.math import Vec2
 
 SPRITE_SCALING = 0.5
 SPRITE_SCALING_COIN = 0.4

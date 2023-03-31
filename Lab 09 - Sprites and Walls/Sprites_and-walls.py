@@ -2,6 +2,7 @@
 import arcade
 import random
 import os
+from pyglet.math import Vec2
 
 
 SPRITE_SCALING = 0.5
@@ -11,9 +12,12 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Lab 9"
 
-NUMBER_OF_COINS = 30
+VIEWPORT_MARGIN = 220
 
+CAMERA_SPEED = 0.1
 MOVEMENT_SPEED = 4
+
+NUMBER_OF_COINS = 30
 
 capture_sound = arcade.load_sound(":resources:sounds/coin2.wav")
 arcade.play_sound(capture_sound)
@@ -26,7 +30,7 @@ class MyGame(arcade.Window):
         """
         Initializer
         """
-        super().__init__(width, height, title)
+        super().__init__(width, height, title, resizable=True)
 
         # Set the working directory (where we expect to find files) to the same
         # directory this .py file is in. You can leave this out of your own
@@ -45,6 +49,17 @@ class MyGame(arcade.Window):
         self.wall_list = None
         self.physics_engine = None
 
+        # Track the current state of what key is pressed
+        self.left_pressed = False
+        self.right_pressed = False
+        self.up_pressed = False
+        self.down_pressed = False
+
+        # Create the cameras. One for the GUI, one for the sprites.
+        # We scroll the 'sprite world' but not the GUI.
+        self.camera_sprites = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.camera_gui = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
+
     def setup(self):
         """ Set up the game and initialize the variables. """
 
@@ -57,18 +72,18 @@ class MyGame(arcade.Window):
         self.player_sprite = arcade.Sprite(":resources:images/alien/alienBlue_front.png",
                                            SPRITE_SCALING - .1)
 
-        self.player_sprite.center_x = 50
-        self.player_sprite.center_y = 64
+        self.player_sprite.center_x = 256
+        self.player_sprite.center_y = 512
 
         # -- Set up the walls
         # Create a series of horizontal walls
-        for y in range(0, 800, 200):
-            for x in range(100, 700, 64):
-                wall = arcade.Sprite(":resources:images/tiles/brickGrey.png", SPRITE_SCALING)
-                wall.center_x = x
-                wall.center_y = y
-                self.wall_list.append(wall)
-
+        for y in range(0, 1600, 64):
+            for x in range(200, 1650, 210):
+                if random.randrange(5) > 0:
+                    wall = arcade.Sprite(":resources:images/tiles/brickGrey.png", SPRITE_SCALING)
+                    wall.center_x = x
+                    wall.center_y = y
+                    self.wall_list.append(wall)
         # -- Randomly place coins where there are no walls
         # Create the coins
         for i in range(NUMBER_OF_COINS):
@@ -116,10 +131,26 @@ class MyGame(arcade.Window):
         # This command has to happen before we start drawing
         self.clear()
 
+        # Camera that we will use to draw all sprites
+        self.camera_sprites.use()
+
         # Draw all the sprites.
         self.wall_list.draw()
         self.coin_list.draw()
         self.player_sprite.draw()
+
+        # Select the camera for ou GUI
+        self.camera_gui.use()
+
+        # Draw the GUI
+        arcade.draw_rectangle_filled(self.width // 2,
+                                     20,
+                                     self.width,
+                                     40,
+                                     arcade.color.ALMOND)
+        text = f"Scroll value: ({self.camera_sprites.position[0]:5.1f}, " \
+               f"{self.camera_sprites.position[1]:5.1f})"
+        arcade.draw_text(text, 10, 10, arcade.color.BLACK_BEAN, 20)
 
         output = f"Score: {self.score}"
         arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
@@ -161,6 +192,29 @@ class MyGame(arcade.Window):
         # Call update on all sprites (The sprites don't do much in this
         # example though.)
         self.physics_engine.update()
+
+        self.scroll_to_player()
+
+    def scroll_to_player(self):
+        """
+        Scroll the window to the player.
+
+        if CAMERA_SPEED is 1, the camera will immediately move to the desired position.
+        Anything between 0 and 1 will have the camera move to the location with a smoother
+        pan.
+        """
+
+        position = Vec2(self.player_sprite.center_x - self.width / 2,
+                        self.player_sprite.center_y - self.height / 2)
+        self.camera_sprites.move_to(position, CAMERA_SPEED)
+
+    def on_resize(self, width, height):
+        """
+        Resize window
+        Handle the user grabbing the edge and resizing the window.
+        """
+        self.camera_sprites.resize(int(width), int(height))
+        self.camera_gui.resize(int(width), int(height))
 
 
 def main():
