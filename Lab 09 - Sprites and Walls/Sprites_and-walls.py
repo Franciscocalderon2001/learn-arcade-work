@@ -17,7 +17,7 @@ VIEWPORT_MARGIN = 220
 CAMERA_SPEED = 0.3
 MOVEMENT_SPEED = 4
 
-NUMBER_OF_COINS = 30
+NUMBER_OF_COINS = 100
 
 capture_sound = arcade.load_sound(":resources:sounds/coin2.wav")
 arcade.play_sound(capture_sound)
@@ -70,7 +70,7 @@ class MyGame(arcade.Window):
 
         # Set up the player
         self.player_sprite = arcade.Sprite(":resources:images/alien/alienBlue_front.png",
-                                           SPRITE_SCALING - .1)
+                                           SPRITE_SCALING - .2)
 
         self.player_sprite.center_x = 256
         self.player_sprite.center_y = 512
@@ -84,6 +84,21 @@ class MyGame(arcade.Window):
                     wall.center_x = x
                     wall.center_y = y
                     self.wall_list.append(wall)
+
+            # Create four bordering walls NEW
+        for x in [0, 1600]:
+            for y in range(0, 1600, 64):
+                wall = arcade.Sprite(":resources:images/tiles/brickGrey.png", SPRITE_SCALING)
+                wall.center_x = x
+                wall.center_y = y
+                self.wall_list.append(wall)
+        for y in [0, 1600]:
+            for x in range(0, 1600, 64):
+                wall = arcade.Sprite(":resources:images/tiles/brickGrey.png", SPRITE_SCALING)
+                wall.center_x = x
+                wall.center_y = y
+                self.wall_list.append(wall)
+
         # -- Randomly place coins where there are no walls
         # Create the coins
         for i in range(NUMBER_OF_COINS):
@@ -100,8 +115,8 @@ class MyGame(arcade.Window):
             # Keep trying until success
             while not coin_placed_successfully:
                 # Position the coin
-                coin.center_x = random.randrange(SCREEN_WIDTH)
-                coin.center_y = random.randrange(SCREEN_HEIGHT)
+                coin.center_x = random.randrange(1600)
+                coin.center_y = random.randrange(1600)
 
                 # See if the coin is hitting a wall
                 wall_hit_list = arcade.check_for_collision_with_list(coin, self.wall_list)
