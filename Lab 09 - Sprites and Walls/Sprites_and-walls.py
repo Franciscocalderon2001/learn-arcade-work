@@ -76,7 +76,7 @@ class MyGame(arcade.Window):
         self.player_sprite.center_y = 512
 
         # -- Set up the walls
-        # Create a series of horizontal walls
+        # Create a series of vertical walls
         for y in range(0, 1600, 64):
             for x in range(200, 1650, 210):
                 if random.randrange(5) > 0:
