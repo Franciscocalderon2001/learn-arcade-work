@@ -85,7 +85,7 @@ class MyGame(arcade.Window):
                     wall.center_y = y
                     self.wall_list.append(wall)
 
-            # Create four bordering walls NEW
+            # Create four bordering walls
         for x in [0, 1600]:
             for y in range(0, 1600, 64):
                 wall = arcade.Sprite(":resources:images/tiles/brickGrey.png", SPRITE_SCALING)
@@ -104,10 +104,7 @@ class MyGame(arcade.Window):
         for i in range(NUMBER_OF_COINS):
 
             # Create the coin instance
-            # Coin image from kenney.nl
             coin = arcade.Sprite(":resources:images/items/gemBlue.png", SPRITE_SCALING_COIN)
-
-            # --- IMPORTANT PART ---
 
             # Boolean variable if we successfully placed the coin
             coin_placed_successfully = False
@@ -136,14 +133,12 @@ class MyGame(arcade.Window):
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
         # Set the background color
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.OUTER_SPACE)
 
     def on_draw(self):
         """
         Render the screen.
         """
-
-        # This command has to happen before we start drawing
         self.clear()
 
         # Camera that we will use to draw all sprites
@@ -154,7 +149,7 @@ class MyGame(arcade.Window):
         self.coin_list.draw()
         self.player_sprite.draw()
 
-        # Select the camera for ou GUI
+        # Select the camera for our GUI
         self.camera_gui.use()
 
         # Draw the GUI
@@ -168,7 +163,7 @@ class MyGame(arcade.Window):
         arcade.draw_text(text, 10, 10, arcade.color.BLACK_BEAN, 20)
 
         output = f"Score: {self.score}"
-        arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+        arcade.draw_text(output, 10, 50, arcade.color.WHITE, 14)
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
