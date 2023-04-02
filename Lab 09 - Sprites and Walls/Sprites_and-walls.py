@@ -88,13 +88,13 @@ class MyGame(arcade.Window):
             # Create four bordering walls
         for x in [0, 1600]:
             for y in range(0, 1600, 64):
-                wall = arcade.Sprite(":resources:images/tiles/brickGrey.png", SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/tiles/planetMid.png", SPRITE_SCALING)
                 wall.center_x = x
                 wall.center_y = y
                 self.wall_list.append(wall)
         for y in [0, 1600]:
             for x in range(0, 1600, 64):
-                wall = arcade.Sprite(":resources:images/tiles/brickGrey.png", SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/tiles/planetMid.png", SPRITE_SCALING)
                 wall.center_x = x
                 wall.center_y = y
                 self.wall_list.append(wall)
