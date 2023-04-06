@@ -19,7 +19,7 @@ with open("AliceInWonderLand200.txt", "r") as file:
         word_list = split_line(line)
         for word in word_list:
             if word.upper() not in dictionary_list:
-                print(f"Line {line_number} possible missed word: {word}")
+                print(f"Line {line_number} possible misspelled word: {word}")
 
 print("--- Binary Search ---")
 
@@ -45,4 +45,4 @@ with open("AliceInWonderLand200.txt", "r") as file:
         word_list = split_line(line)
         for word in word_list:
             if not binary_search(word.upper(), dictionary_list):
-                print(f"Line {line_number}: {word}")
+                print(f"Line {line_number} possible misspelled word: {word}")
