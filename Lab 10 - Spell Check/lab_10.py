@@ -1,17 +1,19 @@
+""""LAB 10"""
 import re
-
+# separate the two searches
 print("--- Linear Search ---")
 
 
+# split line loop
 def split_line(line):
     return re.findall('[A-Za-z]+(?:\'[A-Za-z]+)?', line)
 
-
 dictionary_list = []
+# Have it read it line by line
 with open("dictionary.txt", "r") as file:
     for line in file:
         dictionary_list.append(line.strip().upper())
-
+# Read AliceInWonderLand text line by line
 with open("AliceInWonderLand200.txt", "r") as file:
     line_number = 0
     for line in file:
@@ -21,9 +23,11 @@ with open("AliceInWonderLand200.txt", "r") as file:
             if word.upper() not in dictionary_list:
                 print(f"Line {line_number} possible misspelled word: {word}")
 
+# Separate the second type of search (optional)
 print("--- Binary Search ---")
 
 
+# binary search loop
 def binary_search(word, dictionary_list):
     lower_bound = 0
     upper_bound = len(dictionary_list) - 1
