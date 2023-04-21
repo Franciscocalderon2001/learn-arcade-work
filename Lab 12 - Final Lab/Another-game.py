@@ -28,7 +28,7 @@ SCREEN_TITLE = "Maze Depth First Example"
 
 MOVEMENT_SPEED = 3
 
-NUMBER_OF_COINS = 10
+NUMBER_OF_COINS = 30
 
 TILE_EMPTY = 0
 TILE_CRATE = 1
@@ -202,18 +202,13 @@ class MyGame(arcade.Window):
 
             # Keep trying until success
             while not coin_placed_successfully:
-                # Position the coin
-                coin.center_x = random.randrange(SCREEN_WIDTH)
-                coin.center_y = random.randrange(SCREEN_HEIGHT)
-                # See if the coin is hitting a wall
-                wall_hit_list = arcade.check_for_collision_with_list(coin, self.wall_list)
-
-                # See if the coin is hitting another coin
-                coin_hit_list = arcade.check_for_collision_with_list(coin, self.coin_list)
-
-                if len(wall_hit_list) == 0 and len(coin_hit_list) == 0:
-                    # It is!
+                row = random.randrange(MAZE_HEIGHT)
+                column = random.randrange(MAZE_WIDTH)
+                if maze[row][column] == TILE_EMPTY:
                     coin_placed_successfully = True
+                    coin.center_x = (column * SPRITE_SIZE) + (SPRITE_SIZE / 2)
+                    coin.center_y = (row * SPRITE_SIZE) + (SPRITE_SIZE / 2)
+                    self.coin_list.append(coin)
 
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
