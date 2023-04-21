@@ -72,6 +72,11 @@ class MyGame(arcade.Window):
         self.up_pressed = False
         self.down_pressed = False
 
+        self.min_camera_x = SCREEN_WIDTH / 2
+        self.max_camera_x = 1600 - SCREEN_WIDTH / 2
+        self.min_camera_y = SCREEN_HEIGHT / 2
+        self.max_camera_y = 1600 - SCREEN_HEIGHT / 2
+
         # Create the cameras. One for the GUI, one for the sprites.
         # We scroll the 'sprite world' but not the GUI.
         self.camera_sprites = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -243,6 +248,19 @@ class MyGame(arcade.Window):
         # Call update on all sprites (The sprites don't do much in this
         # example though.)
         self.physics_engine.update()
+
+        # Move the camera to the player's position
+        self.camera_sprites.move_to(self.player_sprite.center_x, self.player_sprite.center_y)
+
+        # Check if the camera is about to move past a wall and adjust its position if needed
+        if self.camera_sprites.left < self.min_camera_x:
+            self.camera_sprites.left = self.min_camera_x
+        elif self.camera_sprites.right > self.max_camera_x:
+            self.camera_sprites.right = self.max_camera_x
+        if self.camera_sprites.bottom < self.min_camera_y:
+            self.camera_sprites.bottom = self.min_camera_y
+        elif self.camera_sprites.top > self.max_camera_y:
+            self.camera_sprites.top = self.max_camera_y
 
         self.scroll_to_player()
 
