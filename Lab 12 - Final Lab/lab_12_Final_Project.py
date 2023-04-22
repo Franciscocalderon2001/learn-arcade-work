@@ -222,7 +222,7 @@ class MyGame(arcade.Window):
         self.processing_time = 0
         self.draw_time = 0
 
-        self.background = arcade.load_texture("/Users/mirkocalderon/Downloads/earth-texture/696 Large.png")
+        self.background = arcade.load_texture("696 Large.png")
 
         self.restart_game = False
 
