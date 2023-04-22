@@ -5,6 +5,10 @@ The maze using a depth-first search maze generation algorithm from Arcade librar
 https://www.algosome.com/articles/maze-generation-depth-first.html
 
 Maze Artwork comes from https://kenney.nl
+Background image comes from: https://www.freepik.com/free-vector/earth-texture_997013.htm#query=dirt%20background%20game&
+position=9&from_view=search&track=robertav1_2_sidr. website is freepick.com
+Background artist: Omelapics
+
 
 If Python and Arcade are installed, this example can be run from the command line with:
 python -m arcade.examples.maze_depth_first
