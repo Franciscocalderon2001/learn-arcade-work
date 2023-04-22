@@ -28,7 +28,7 @@ SCREEN_TITLE = "Maze Depth First Example"
 
 MOVEMENT_SPEED = 3
 
-NUMBER_OF_COINS = 30
+NUMBER_OF_COINS = 0
 
 TILE_EMPTY = 0
 TILE_CRATE = 1
@@ -104,6 +104,8 @@ class MyGame(arcade.Window):
         file_path = os.path.dirname(os.path.abspath(__file__))
         os.chdir(file_path)
 
+        self.start_time = 0
+
         # Sprite lists
         self.player_list = None
         self.wall_list = None
@@ -131,6 +133,8 @@ class MyGame(arcade.Window):
         self.player_list = arcade.SpriteList()
         self.wall_list = arcade.SpriteList()
         self.coin_list = arcade.SpriteList()
+
+        self.start_time = timeit.default_timer()
 
         self.score = 0
 
@@ -213,13 +217,16 @@ class MyGame(arcade.Window):
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
         # Set the background color
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.DARK_BROWN)
 
         # Set the viewport boundaries
         # These numbers set where we have 'scrolled' to.
         self.view_left = 0
         self.view_bottom = 0
         print(f"Total wall blocks: {len(self.wall_list)}")
+
+    def draw_timer(self):
+        elapsed_time = int(timeit.default_timer() - self.start_time)
 
     def on_draw(self):
         """
@@ -229,6 +236,8 @@ class MyGame(arcade.Window):
         # This command has to happen before we start drawing
         self.clear()
 
+        self.draw_timer()
+
         # Start timing how long this takes
         draw_start_time = timeit.default_timer()
 
@@ -237,13 +246,33 @@ class MyGame(arcade.Window):
         self.player_list.draw()
         self.coin_list.draw()
 
-        if len(self.coin_list) == 1:
+        if len(self.coin_list) == 0:
             arcade.draw_text("Game Over",
-                             300, 400,
+                             self.view_left + 350,
+                             SCREEN_HEIGHT - 400 + self.view_bottom,
+                             arcade.color.WHITE, 40)
+            arcade.draw_text("What was your fastest time?",
+                             self.view_left + 250,
+                             SCREEN_HEIGHT - 450 + self.view_bottom,
                              arcade.color.WHITE, 30)
+            return
 
         # Draw info on the screen
         sprite_count = len(self.wall_list)
+
+        elapsed_time = int(timeit.default_timer() - self.start_time)
+
+        output = f"Time: {elapsed_time:02d}"
+        arcade.draw_text(output,
+                         self.view_left + 20,
+                         SCREEN_HEIGHT - 660 + self.view_bottom,
+                         arcade.color.WHITE, 16)
+
+        output = f"Score Count: {self.score}"
+        arcade.draw_text(output,
+                         self.view_left + 20,
+                         SCREEN_HEIGHT - 680 + self.view_bottom,
+                         arcade.color.WHITE, 16)
 
         output = f"Sprite Count: {sprite_count}"
         arcade.draw_text(output,
