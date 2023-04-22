@@ -138,6 +138,7 @@ class MyGame(arcade.Window):
         self.laser_list.draw()
         self.coin_list.draw()
         self.player_list.draw()
+
         if len(self.coin_list) == 0:
             arcade.draw_text("Game Over",
                              300, 400,
