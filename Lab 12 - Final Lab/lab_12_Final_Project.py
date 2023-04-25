@@ -42,7 +42,7 @@ SCREEN_HEIGHT = 700
 # Title of the screen
 SCREEN_TITLE = "Final Project"
 
-# Movement speed of player
+# Movement speed of player®
 MOVEMENT_SPEED = 3
 
 # Organized the number of rocks and coins
